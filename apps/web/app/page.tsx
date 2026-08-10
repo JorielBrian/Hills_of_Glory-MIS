@@ -1,102 +1,48 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
+import HeroSection from '@/components/Root/hero-section';
+import { SiteShell } from '@/components/site-shell';
 
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
-};
-
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
-
+export default function HomePage() {
   return (
-    <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
-    </>
-  );
-};
-
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/web/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://turborepo.dev/docs?utm_source"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <SiteShell>
+      <HeroSection>
+        <div className="mx-auto max-w-8xl px-6 text-center">
+          <p className="text-lg font-semibold uppercase tracking-[0.3em] text-amber-300">Welcome to Hills of Glory</p>
+          <h1 className="mt-6 text-6xl font-semibold tracking-tight">A modern church experience that invites everyone home.</h1>
+          <p className="mx-auto mt-6 max-w-6xl text-xl leading-8 text-slate-200">
+            We create warm spaces for people to encounter faith, form meaningful relationships, and grow in purpose.
+            Join us at our services, discover ministries, and connect with others in Hills of Glory.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href="/plan-your-visit" className="rounded-full bg-amber-300 px-8 py-3 font-semibold text-slate-950 shadow-lg shadow-amber-300/20">Plan Your Visit</a>
+            <a href="/events" className="rounded-full border border-white/20 px-8 py-3 text-white">Explore Events</a>
+          </div>
         </div>
-        <Button appName="web" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://turborepo.dev?utm_source=create-turbo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to turborepo.dev →
-        </a>
-      </footer>
-    </div>
+      </HeroSection>
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <div className="grid gap-10 lg:grid-cols-3">
+          <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold">Authentic Community</h2>
+            <p className="mt-4 text-slate-600">
+              Hills of Glory is a place for people from every background to belong. Our church family encourages honest conversations,
+              meaningful service, and a sense of belonging from the first visit.
+            </p>
+          </article>
+          <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold">Vibrant Worship</h2>
+            <p className="mt-4 text-slate-600">
+              Experience modern worship, creative gatherings, and thought-provoking teaching designed to inspire your next step.
+              We blend tradition with fresh energy and a welcoming atmosphere.
+            </p>
+          </article>
+          <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold">Serve & Grow</h2>
+            <p className="mt-4 text-slate-600">
+              Discover ministries that match your gifts and passions. From music and outreach to groups and leadership training,
+              we help every person grow spiritually and make a real impact.
+            </p>
+          </article>
+        </div>
+      </section>
+    </SiteShell>
   );
 }
